@@ -22,13 +22,20 @@ export default function ClientsList() {
             <th>Vardas</th>
             <th>Pavardė</th>
             <th>El.paštas</th>
-            <th>Tel. numeris</th>
             <th>Registracijos laikas</th>
+            <th>Ištrinti</th>
+            <th>Atnaujinti</th>
           </tr>
         </thead>
         <tbody>
           {clients.map((client) => {
-            return <Client client={client} key={client._id} />;
+            return (
+              <Client
+                setClients={setClients}
+                client={client}
+                key={client._id}
+              />
+            );
           })}
         </tbody>
       </table>

@@ -15,18 +15,15 @@ const clientSchema = mongoose.Schema({
   },
   email: {
     type: String,
+    require: true,
     minLength: 3,
     maxLength: 30,
   },
-  phoneNumber: {
-    type: String,
-    require: true,
-    minLength: 4,
-    maxLength: 15,
-  },
+
   registrationDate: {
     type: Date,
     default: Date.now,
+    require: true,
   },
 });
 

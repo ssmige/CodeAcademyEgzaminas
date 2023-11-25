@@ -1,12 +1,12 @@
 import Client from "../models/Client.js";
 
 export async function addNewClient(req, res) {
-  const { name, surname, email, phoneNumber, registrationDate } = req.body;
+  const { name, surname, email, registrationDate } = req.body;
 
-  if (!name || !surname || !phoneNumber) {
+  if (!name || !surname || !email) {
     return res
       .status(400)
-      .json({ message: "Name, surname and phone number required" });
+      .json({ message: "Name, surname and email required" });
   }
 
   try {
@@ -14,7 +14,6 @@ export async function addNewClient(req, res) {
       name,
       surname,
       email,
-      phoneNumber,
       registrationDate,
     });
 
@@ -69,12 +68,12 @@ export async function deleteClient(req, res) {
 
 export async function updateClient(req, res) {
   const { id } = req.params;
-  const { name, surname, email, phoneNumber, registrationDate } = req.body;
+  const { name, surname, email, registrationDate } = req.body;
 
-  if (!name || !surname || !phoneNumber) {
+  if (!name || !surname || !email) {
     return res
       .status(404)
-      .json({ message: "Name, surname and phone number is required" });
+      .json({ message: "Name, surname and email is required" });
   }
 
   try {
@@ -87,7 +86,6 @@ export async function updateClient(req, res) {
     client.name = name;
     client.surname = surname;
     client.email = email;
-    client.phoneNumber = phoneNumber;
     client.registrationDate = registrationDate;
 
     await client.save();
