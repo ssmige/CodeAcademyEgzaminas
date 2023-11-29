@@ -1,0 +1,21 @@
+.text-success {
+  color: green;
+}
+
+.text-error {
+  color: red;
+}
+/* .datePicker {
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 0.8rem;
+  background-color: #336bb06b;
+  color: #000;
+  border: 1px solid #a52525;
+  border-radius: 0.5rem;
+  display: inline-block;
+  position: relative;
+} */
+
+.react-datepicker__time-list-item text-error {
+  color: red;
+}

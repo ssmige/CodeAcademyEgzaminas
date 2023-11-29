@@ -1,0 +1,35 @@
+.footer {
+  position: fixed;
+  width: 80%;
+  bottom: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+.footerInfo {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footerLogo {
+  display: flex;
+  align-items: center;
+}
+.footerLogoImg {
+  width: 50px;
+  border-radius: 50%;
+  padding-right: 1.2rem;
+}
+h4 {
+  color: rgb(202, 182, 149);
+  font-size: 15px;
+}
+.socialIcons {
+  color: rgb(202, 182, 149);
+}
+.copyRights {
+  text-align: center;
+  padding-bottom: 20px;
+  color: rgb(118, 97, 62);
+}

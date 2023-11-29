@@ -1,0 +1,44 @@
+.container {
+  position: fixed;
+  background-color: #f2877d;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  top: 0;
+}
+
+.innerContainer {
+  background-color: aliceblue;
+  width: 80%;
+  margin: auto;
+  color: #000;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.modalButton {
+  padding: 10px 15px;
+  border: 1px solid #e4e1e1;
+  color: black;
+  border-radius: 10px;
+  background-color: #7e82d3;
+  font-size: x-large;
+}
+
+.modalButton:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  background-color: #5b6373;
+  color: #ffffff;
+}
+
+.header {
+  padding: 1rem;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+h3 {
+  text-align: center;
+}

@@ -34,11 +34,13 @@ export default function EditClient() {
         registrationDate,
       })
       .then(() => {
-        navigate("/");
+        navigate("/registration");
       })
       .catch(() => alert("Ivyko klaida"));
   }
-
+  function handleCancel() {
+    navigate("/registration");
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -71,7 +73,10 @@ export default function EditClient() {
           setRegistrationDate={setRegistrationDate}
         />
         <br />
-        <button type="submit">Išsaugoti</button>
+        <button type="submit">Išsaugoti pakeitimus</button>
+        <button type="onClick" onClick={handleCancel}>
+          Atšaukti
+        </button>
       </form>
     </div>
   );
