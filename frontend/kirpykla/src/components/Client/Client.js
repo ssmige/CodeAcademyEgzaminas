@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import clientStyles from "./Client.module.css";
 
 const endpoint = "http://localhost:3001/registration";
 
@@ -35,8 +36,10 @@ export default function Client({ client, setClients }) {
           hour12: false,
         })}
       </td>
-      <td>
-        <button onClick={handleDelete}>Ištrinti</button>
+      <td className={clientStyles.tableButton}>
+        <button className={clientStyles.buttonDelete} onClick={handleDelete}>
+          Ištrinti
+        </button>
       </td>
       <td>
         <button onClick={handleUpdate}>Atnaujinti</button>

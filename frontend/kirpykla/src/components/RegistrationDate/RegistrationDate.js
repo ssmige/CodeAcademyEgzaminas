@@ -3,7 +3,6 @@ import styles from "./RegistrationDate.module.css";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import "react-datepicker/dist/react-datepicker-cssmodules.css";
 
 export default function RegistrationDate({
   registrationDate,
@@ -12,12 +11,6 @@ export default function RegistrationDate({
   children,
   onClick,
 }) {
-  // const filterWorkingHours = (time) => {
-  //   return time.getHours() >= 8 && time.getHours() < 20
-  //     ? "text-success"
-  //     : "text-error";
-  // };
-
   const filterWorkingHours = (time) => {
     return time.getHours() >= 8 && time.getHours() < 20;
   };
@@ -27,6 +20,7 @@ export default function RegistrationDate({
   return (
     <div>
       <DatePicker
+        className={styles.datePicker}
         id="registrationDate"
         selected={registrationDate ? new Date(registrationDate) : null}
         onChange={(date) => setRegistrationDate(date)}
@@ -34,15 +28,13 @@ export default function RegistrationDate({
         timeIntervals={15}
         dateFormat="yyyy-MM-dd HH:mm"
         timeFormat="HH:mm"
-        showIcon
+        // showIcon
         placeholderText={"Pasirinkite vizito laiką"}
         calendarStartDay={1}
         locale={lt}
         timeCaption="Laikas"
         filterTime={filterWorkingHours}
         filterDate={filterPassedDays}
-
-        // children={<button>Pasirinktas vizito laikas</button>}
       />
     </div>
   );

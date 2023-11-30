@@ -1,0 +1,17 @@
+td {
+  color: rgb(79, 66, 44);
+  border: 1px solid black;
+}
+
+button {
+  background-color: rgb(202, 182, 149);
+  color: rgb(79, 66, 44);
+  font-size: large;
+}
+
+button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+  color: rgb(247, 223, 185);
+  background-color: rgb(72, 67, 92);
+}

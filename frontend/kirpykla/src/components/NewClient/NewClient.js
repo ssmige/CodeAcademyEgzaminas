@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./NewClient.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import Label from "../Label/Label";
 import RegistrationDate from "../RegistrationDate/RegistrationDate";
+
 const endpoint = "http://localhost:3001/registration";
 
-export default function NewClient({ onClose }) {
-  const navigate = useNavigate();
-
-  const [isNewClientAdded, setIsNewClientAdded] = useState(false);
+export default function NewClient({ onClose, setClients }) {
+  // const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [isNameValid, setIsNameValid] = useState(false);
@@ -68,8 +67,12 @@ export default function NewClient({ onClose }) {
           registrationDate,
         })
         .then(() => {
+          axios
+            .get(endpoint)
+            .then(({ data }) => setClients(data))
+            .catch(() => alert("klaida"));
+          alert("pridejo");
           onClose();
-          alert("Pridėtas naujas klientas");
         })
         .catch((error) => {
           alert("Ivyko klaida");
@@ -77,7 +80,7 @@ export default function NewClient({ onClose }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
       <Label text={"Name"} />
       <Input
         startIcon={<i className="fa-solid fa-user"> </i>}
@@ -115,8 +118,8 @@ export default function NewClient({ onClose }) {
         placholder={"Įveskite el. paštą"}
         warningText={"El. paštas privalomas"}
       />
-      <Label text={"Registracijos laikas"} htmlFor={"registrationDate"} />
-      <Input
+
+      {/* <Input
         onChange={(e) => setRegistrationDate(e.target.value)}
         isValid={isRegistrationDateValid}
         endIcon={
@@ -124,22 +127,14 @@ export default function NewClient({ onClose }) {
             <i className={"fa-solid fa-check"}></i>
           ) : null
         }
-      >
-        <RegistrationDate
-          placeholderText={"Pasirinkite vizito laiką"}
-          registrationDate={registrationDate}
-          setRegistrationDate={setRegistrationDate}
-        />
-      </Input>
+      ></Input> */}
 
-      {/* 
+      <Label text={"Registracijos laikas"} htmlFor={"registrationDate"} />
       <RegistrationDate
-        className={styles.invalid}
         placeholderText={"Pasirinkite vizito laiką"}
         registrationDate={registrationDate}
         setRegistrationDate={setRegistrationDate}
-      /> */}
-
+      />
       <Button
         type={"submit"}
         onClick={handleSubmit}

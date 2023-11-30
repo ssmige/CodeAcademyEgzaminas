@@ -1,13 +1,19 @@
 import React from "react";
-import styles from "./Button.module.css";
+import buttonStyles from "./Button.module.css";
 
-export default function Button({ onClick, buttonTitle, onClose, icon }) {
+export default function Button({
+  onClick,
+  buttonTitle,
+  onClose,
+  icon,
+  className,
+}) {
   return (
     <button
-      className={styles.button}
       onClick={onClick}
       onClose={onClose}
       icon={icon}
+      className={`${buttonStyles.button} ${className}`}
     >
       {buttonTitle}
     </button>

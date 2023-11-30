@@ -1,23 +1,15 @@
-.form {
+.formContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 1em;
-}
-
-.form > button {
-  margin-top: 15px;
-  background-color: #f2877d;
-  color: #ffffff;
-}
-
-.form > button:hover {
-  opacity: 0.9;
-  cursor: pointer;
-  /* background-color: #f2877d;
-  color: #ffffff; */
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 1rem;
+  width: 80%;
+  margin: auto;
 }
 
 i {
   padding-left: 15px;
+  padding-right: 10px;
 }

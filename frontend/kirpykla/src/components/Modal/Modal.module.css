@@ -1,43 +1,52 @@
 .container {
   position: fixed;
-  background-color: #f2877d;
   width: 100vw;
   height: 100vh;
   z-index: 100;
   top: 0;
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5a0004c5f9a61ec49a02c7bb/1510549721494-GNJQRE65UYGLXIBNRWH2/_O3A0001.jpg?format=1500w);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur (15px);
+  background-color: rgba(231, 231, 231, 0.1);
+  z-index: 101;
 }
 
 .innerContainer {
-  background-color: aliceblue;
-  width: 80%;
-  margin: auto;
-  color: #000;
-  border-radius: 15px;
-  padding: 15px;
-}
-
-.modalButton {
-  padding: 10px 15px;
-  border: 1px solid #e4e1e1;
-  color: black;
-  border-radius: 10px;
-  background-color: #7e82d3;
-  font-size: x-large;
-}
-
-.modalButton:hover {
-  opacity: 0.9;
-  cursor: pointer;
-  background-color: #5b6373;
-  color: #ffffff;
+  color: rgb(118, 97, 62);
+  background-color: rgb(202, 182, 149);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  border-radius: 30px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
+  z-index: 102;
 }
 
 .header {
-  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding-top: 0.5rem;
+  text-align: center;
 }
 
 h1 {
-  margin-bottom: 0;
+  margin: 0;
 }
 h3 {
   text-align: center;

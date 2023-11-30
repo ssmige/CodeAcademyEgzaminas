@@ -1,0 +1,44 @@
+.formContainer {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(202, 182, 149);
+  border-radius: 30px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.input {
+  width: 80%;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  font-size: x-large;
+  border-radius: 7px;
+  padding: 10px;
+  background-color: white;
+  padding-left: 2rem;
+}
+.label {
+  font-size: x-large;
+  color: rgb(79, 66, 44);
+}
+h1 {
+  text-align: center;
+  padding-top: 3rem;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+.buttonPosition {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15rem;
+}
+/* color: rgb(118, 97, 62);
+background-color: rgb(202, 182, 149); */

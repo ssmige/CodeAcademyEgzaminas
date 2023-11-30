@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import RegistrationDate from "../RegistrationDate/RegistrationDate";
+import styles from "./EditClient.module.css";
+import mainStyles from "../MainPage/MainPage.module.css";
+import Button from "../Button/Button.js";
+import buttonStyles from "../Button/Button.module.css";
 
 const endpoint = "http://localhost:3001/registration";
 
@@ -42,42 +46,63 @@ export default function EditClient() {
     navigate("/registration");
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Vardas</label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br />
-        <label htmlFor="surname">Pavardė</label>
-        <input
-          id="surname"
-          type="text"
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-        />
-        <br />
-        <label htmlFor="email">El.paštas</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <RegistrationDate
-          registrationDate={registrationDate}
-          setRegistrationDate={setRegistrationDate}
-        />
-        <br />
-        <button type="submit">Išsaugoti pakeitimus</button>
-        <button type="onClick" onClick={handleCancel}>
-          Atšaukti
-        </button>
-      </form>
+    <div className={mainStyles.size}>
+      <div className={mainStyles.background}></div>
+      <body>
+        <h1>Atnaujinti kliento duomenis</h1>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
+          <label className={styles.label} htmlFor="name">
+            Vardas
+          </label>
+          <input
+            className={styles.input}
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
+          <label className={styles.label} htmlFor="surname">
+            Pavardė
+          </label>
+          <input
+            className={styles.input}
+            id="surname"
+            type="text"
+            value={surname}
+            onChange={(e) => setSurname(e.target.value)}
+          />
+          <br />
+          <label className={styles.label} htmlFor="email">
+            El.paštas
+          </label>
+          <input
+            className={styles.input}
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <label className={styles.label} htmlFor="email">
+            Registacijos laikas
+          </label>
+          <RegistrationDate
+            registrationDate={registrationDate}
+            setRegistrationDate={setRegistrationDate}
+          />
+          <br />
+          <div className={styles.buttonPosition}>
+            <Button type="submit" buttonTitle={"Išsaugoti pakeitimus"} />
+            <Button
+              className={buttonStyles.modalCancel}
+              type="onClick"
+              onClick={handleCancel}
+              buttonTitle={"Atšaukti"}
+            />
+          </div>
+        </form>
+      </body>
     </div>
   );
 }

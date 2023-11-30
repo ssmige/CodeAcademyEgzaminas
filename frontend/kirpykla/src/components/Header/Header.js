@@ -1,8 +1,16 @@
 import React from "react";
 import styles from "./Header.module.css";
+import buttonStyles from "../Button/Button.module.css";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  function handleRegistrationBtn() {
+    navigate("/registration");
+  }
+
   return (
     <header>
       <div>
@@ -16,9 +24,9 @@ export default function Header() {
             <h3>Grožio salonas</h3>
           </div>
           <Button
-            className={styles.button}
-            // onClick={handleRegistration}
+            className={buttonStyles}
             buttonTitle={"Registracija vizitui"}
+            onClick={handleRegistrationBtn}
           />
         </div>
         <div>

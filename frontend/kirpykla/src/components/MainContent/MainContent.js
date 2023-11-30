@@ -5,7 +5,7 @@ export default function MainContent() {
   return (
     <main>
       <section className={styles.section}>
-        <div>
+        <div className={styles.sectionHeigth}>
           <h2>Nebūtina patiems kankintis</h2>
           <div className={styles.image}>
             <img
