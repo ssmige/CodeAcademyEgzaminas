@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./NewClient.module.css";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import Label from "../Label/Label";
@@ -10,8 +9,6 @@ import RegistrationDate from "../RegistrationDate/RegistrationDate";
 const endpoint = "http://localhost:3001/registration";
 
 export default function NewClient({ onClose, setClients }) {
-  // const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [isNameValid, setIsNameValid] = useState(false);
   const [surname, setSurname] = useState("");
@@ -21,9 +18,29 @@ export default function NewClient({ onClose, setClients }) {
   const [registrationDate, setRegistrationDate] = useState("");
   const [isRegistrationDateValid, setIsRegistrationDateValid] = useState(false);
 
+  const [emptyFieldsMessage, setEmptyFieldsMessage] = useState("");
+  const [error, setError] = useState("");
+  const [existingClientError, setExistingClientError] = useState("");
+
   useEffect(() => {
     const currentTime = new Date();
     const selectedTime = registrationDate ? new Date(registrationDate) : null;
+
+    if (
+      name === "" &&
+      surname === "" &&
+      email === "" &&
+      registrationDate === ""
+    ) {
+      setIsNameValid(false);
+      setIsSurnameValid(false);
+      setIsEmailValid(false);
+      setIsRegistrationDateValid(false);
+      setEmptyFieldsMessage("Visi laukai turi būti užpildyti");
+      return;
+    } else {
+      setEmptyFieldsMessage("");
+    }
 
     if (name.length <= 2) {
       setIsNameValid(false);
@@ -45,43 +62,53 @@ export default function NewClient({ onClose, setClients }) {
 
     if (!selectedTime || selectedTime > currentTime) {
       setIsRegistrationDateValid(true);
+      setError("");
     } else {
       setIsRegistrationDateValid(false);
-      alert("Patikrinkite registracijos laiką, praėjusi data negalima");
+      setError("Patikrinkite registracijos laiką, praėjusi data negalima");
     }
   }, [name, surname, email, registrationDate]);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (
-      isNameValid &&
-      isEmailValid &&
-      isSurnameValid &&
-      isRegistrationDateValid
-    )
-      axios
-        .post(`${endpoint}`, {
-          name,
-          surname,
-          email,
-          registrationDate,
-        })
-        .then(() => {
-          axios
-            .get(endpoint)
-            .then(({ data }) => setClients(data))
-            .catch(() => alert("klaida"));
-          alert("pridejo");
-          onClose();
-        })
-        .catch((error) => {
-          alert("Ivyko klaida");
-        });
+      !isNameValid ||
+      !isEmailValid ||
+      !isSurnameValid ||
+      !isRegistrationDateValid ||
+      name === "" ||
+      surname === "" ||
+      email === "" ||
+      registrationDate === ""
+    ) {
+      setExistingClientError("Visi laukai turi būti užpildyti");
+      return;
+    }
+
+    axios
+      .post(`${endpoint}`, {
+        name,
+        surname,
+        email,
+        registrationDate,
+      })
+      .then(() => {
+        axios
+          .get(endpoint)
+          .then(({ data }) => setClients(data))
+          .catch(() => alert("klaida"));
+        alert("Klientas sėkmingai pridėtas");
+        onClose();
+      })
+      .catch((error) => {
+        alert("Ivyko klaida");
+      });
   }
 
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit}>
-      <Label text={"Name"} />
+      <div className={styles.errorMessage}>{emptyFieldsMessage}</div>
+      <Label text={"Vardas"} />
       <Input
         startIcon={<i className="fa-solid fa-user"> </i>}
         endIcon={isNameValid ? <i className={"fa-solid fa-check"}></i> : null}
@@ -119,17 +146,11 @@ export default function NewClient({ onClose, setClients }) {
         warningText={"El. paštas privalomas"}
       />
 
-      {/* <Input
-        onChange={(e) => setRegistrationDate(e.target.value)}
-        isValid={isRegistrationDateValid}
-        endIcon={
-          isRegistrationDateValid ? (
-            <i className={"fa-solid fa-check"}></i>
-          ) : null
-        }
-      ></Input> */}
-
-      <Label text={"Registracijos laikas"} htmlFor={"registrationDate"} />
+      <Label
+        error={error}
+        text={"Registracijos laikas"}
+        htmlFor={"registrationDate"}
+      />
       <RegistrationDate
         placeholderText={"Pasirinkite vizito laiką"}
         registrationDate={registrationDate}
@@ -139,6 +160,16 @@ export default function NewClient({ onClose, setClients }) {
         type={"submit"}
         onClick={handleSubmit}
         buttonTitle={"Pridėti klientą"}
+        disabled={
+          !isNameValid ||
+          !isSurnameValid ||
+          !isEmailValid ||
+          !isRegistrationDateValid ||
+          name === "" ||
+          surname === "" ||
+          email === "" ||
+          registrationDate === ""
+        }
       />
     </form>
   );

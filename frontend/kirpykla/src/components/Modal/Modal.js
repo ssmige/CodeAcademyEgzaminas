@@ -30,20 +30,10 @@ export default function Modal({
               onClick={onClose}
             />
           </div>
-
           <p>{text}</p>
         </div>
         {children}
-        <>
-          {/* <Button
-            className={[
-              buttonStyles.modalCancel,
-              buttonStyles.buttonPositionRigth,
-            ].join(" ")}
-            buttonTitle={"Atšaukti"}
-            onClick={onClose}
-          /> */}
-        </>
+        <></>
       </div>
     </div>,
     document.body

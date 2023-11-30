@@ -13,3 +13,7 @@ i {
   padding-left: 15px;
   padding-right: 10px;
 }
+.errorMessage {
+  font-size: x-large;
+  color: red;
+}
