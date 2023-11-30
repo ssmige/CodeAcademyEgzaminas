@@ -12,7 +12,6 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/registration" element={<ClientsList />} />
         <Route path="/edit/:id" element={<EditClient />} />
-        <Route path="/delete/:id" />
         <Route pathe="/" element={<NewClient />} />
       </Routes>
     </div>
