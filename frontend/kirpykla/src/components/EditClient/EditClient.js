@@ -93,13 +93,13 @@ export default function EditClient() {
           />
           <br />
           <div className={styles.buttonPosition}>
-            <Button type="submit" buttonTitle={"Išsaugoti pakeitimus"} />
             <Button
               className={buttonStyles.modalCancel}
               type="onClick"
               onClick={handleCancel}
               buttonTitle={"Atšaukti"}
             />
+            <Button type="submit" buttonTitle={"Išsaugoti pakeitimus"} />
           </div>
         </form>
       </body>
